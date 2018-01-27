@@ -5,7 +5,7 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="main.css">
+    <link rel="stylesheet" type="text/css" href="styles/main.css">
 
     <!-- D3 -->
     <script src="https://d3js.org/d3.v4.min.js"></script>
@@ -14,29 +14,41 @@
   <body>
     <!-- Title & Logo -->
     <h3>Welcome to Our Website!</h3>
-    <!-- Form for input -->
-      <!-- add years and months options for age -->
     <div class="container">
-      <form>
-        <div class="form-group" id="pet-name-wrapper">
-          <label for="pet-name">Name</label>
-          <input type="text" class="form-control" id="pet-name-input">
-        </div>
-        <div class="pet-age-wrapper">
+      <div class="row" id="form-wrapper">
+        <!-- Form for input -->
+          <!-- add years and months options for age -->
+        <form>
+          <div class="form-group" id="pet-name-wrapper">
+            <label for="pet-name">Name</label>
+            <input type="text" class="form-control" id="pet-name-input">
+          </div>
+          <div class="pet-age-wrapper">
+            <label for="pet-age">Age</label>
+            <input type="text" class="form-control" id="pet-age-years-input">
+            <input type="text" class="form-control" id="pet-age-months-input">
+          </div>
+          <div class="pet-weight-wrapper">
+            <label for="pet-weight">Weight</label>
+            <input type="text" class="form-control" id="pet-weight-input">
+          </div>
+          <div class="pet-size-wrapper">
 
-        </div>
-        <div class="pet-weight-wrapper">
+          </div>
+          <div class="pet-breed-wrapper">
+            <label for="pet-breed">Breed</label>
+            <input type="text" class="form-control" id="pet-breed-input">
+          </div>
+        </form>
+      </div>
+      <!-- Data & Graphs -->
+      <div class="row">
 
-        </div>
-        <div class="pet-size-wrapper">
+      </div>
+      <!-- Messages -->
+      <div class="row">
 
-        </div>
-        <div class="pet-breed-wrapper">
-
-        </div>
-      </form>
+      </div>
     </div>
-    <!-- Data & Graphs -->
-    <!-- Messages -->
   </body>
 </html>

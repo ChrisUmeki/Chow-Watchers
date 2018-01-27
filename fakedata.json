@@ -1,0 +1,18 @@
+{
+  "golden retriever": [
+    {
+      "age": 36,
+      "weight": 50
+    }
+  ],
+  "greyhound": [
+    {
+      "age": 60,
+      "weight": 40
+    },
+    {
+      "age": 96,
+      "weight": 35
+    }
+  ]
+}

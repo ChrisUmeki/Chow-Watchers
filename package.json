@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/ChrisUmeki/Animal-Health-Hackathon-2018#readme",
   "dependencies": {
+    "d3": "^4.12.2",
     "express": "^4.16.2"
   }
 }

@@ -1,5 +1,5 @@
 {
-  "name": "is-my-dog-normal",
+  "name": "chow-watchers",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/ChrisUmeki/Animal-Health-Hackathon-2018#readme",
   "dependencies": {
-    "d3": "^4.12.2",
-    "express": "^4.16.2"
+    "express": "^4.16.2",
+    "nodemon": "^1.14.11"
   }
 }

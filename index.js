@@ -18,8 +18,9 @@ app.get('/', (req, res) => {
 
 app.get('/result', urlencodedParser, (req, res) => {
   //let name = req.body.pet-name-input;
-  console.log(req.body);
+  console.log(req.query);
 
+  
   res.sendFile(path.join(__dirname + '/result.html'));
 
 

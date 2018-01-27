@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Title</title>
+    <title>Chow Watchers</title>
 
     <!-- CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -28,19 +28,19 @@
       <div class="row" id="form-wrapper">
         <!-- Form for input -->
           <!-- add years and months options for age -->
-        <form class="form col-md-6">
+        <form class="form col-md-6" action="/result" method="get">
           <p class="subtitle">Enter your dog's information.</p>
           <div class="form-group" id="pet-name-wrapper">
             <!-- <label for="pet-name">Name</label> -->
-            <input type="text" class="form-control" id="pet-name-input" placeholder="Name">
+            <input name="name" type="text" class="form-control" id="pet-name-input" placeholder="Name">
           </div>
           <div class="form-group" id="pet-age-wrapper">
             <!-- <label for="pet-age">Age</label> -->
-            <input type="text" class="form-control" id="pet-age-input" placeholder="Age (in years)">
+            <input name="age" type="text" class="form-control" id="pet-age-input" placeholder="Age (in years)">
           </div>
           <div class="form-group" id="pet-weight-wrapper">
             <!-- <label for="pet-weight">Weight (in pounds)</label> -->
-            <input type="text" class="form-control" id="pet-weight-input" placeholder="Weight (in pounds)">
+            <input name="weight" type="text" class="form-control" id="pet-weight-input" placeholder="Weight (in pounds)">
           </div>
           <div class="form-group" id="pet-breed-wrapper">
             <!-- <label for="pet-breed">Breed</label> -->
@@ -91,7 +91,7 @@
       <!-- Data & Graphs -->
       <div class="row">
         <div id="data-wrapper">
-          <p class="subtitle">Stats & Results</p>
+          <!-- <p class="subtitle">Stats & Results</p> -->
         </div>
       </div>
       <!-- Messages -->

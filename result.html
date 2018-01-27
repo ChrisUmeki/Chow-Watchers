@@ -32,66 +32,55 @@
         <div class="data-wrapper">
           <!-- <svg style="width: 500px; height: 500px;"></svg> -->
           <script>
-          // d3.csv('/fake.csv', data => {
-          //   console.log(data);
+          d3.csv('fake.csv', data => {
 
+            let margin = {top: 20, right: 20, bottom: 80, left: 100},
+              width = 960 - margin.left - margin.right,
+              height = 500 - margin.top - margin.bottom;
 
-          // })
-          let data = [[12,14], [24,27], [25,30], [60,40]];
+            let x = d3.scaleLinear()
+              .domain([0, d3.max(data, d => { return d.age; })])
+              .range([ 0, width ]);
 
-          let margin = {top: 20, right: 20, bottom: 80, left: 100},
-            width = 960 - margin.left - margin.right,
-            height = 500 - margin.top - margin.bottom;
+            let y = d3.scaleLinear()
+              .domain([0, d3.max(data, d => { return d.weight; })])
+              .range([ height, 0 ]);
 
-          let x = d3.scaleLinear()
-            .domain([0, d3.max(data, d => { return d[0]; })])
-            .range([ 0, width ]);
+            let chart = d3.select('body')
+              .append('svg:svg')
+              .attr('width', width + margin.right + margin.left)
+              .attr('height', height + margin.top + margin.bottom)
+              .attr('class', 'chart')
 
-          let y = d3.scaleLinear()
-            .domain([0, d3.max(data, d => { return d[1]; })])
-            .range([ height, 0 ]);
+            let main = chart.append('g')
+              .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')')
+              .attr('width', width)
+              .attr('height', height)
+              .attr('class', 'main')
 
-          let chart = d3.select('body')
-            .append('svg:svg')
-            .attr('width', width + margin.right + margin.left)
-            .attr('height', height + margin.top + margin.bottom)
-            .attr('class', 'chart')
+            let xAxis = d3.axisBottom(x);
 
-          let main = chart.append('g')
-            .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')')
-            .attr('width', width)
-            .attr('height', height)
-            .attr('class', 'main')
+            main.append('g')
+              .attr('transform', 'translate(0,' + height + ')')
+              .attr('class', 'main axis date')
+              .call(xAxis);
 
-          let xAxis = d3.axisBottom(x);
+            let yAxis = d3.axisLeft(y);
 
-          // let xAxis = d3.svg.axis()
-          //   .scale(x)
-          //   .orient('bottom');
+            main.append('g')
+              .attr('transform', 'translate(0,0)')
+              .attr('class', 'main axis date')
+              .call(yAxis);
 
-          main.append('g')
-            .attr('transform', 'translate(0,' + height + ')')
-            .attr('class', 'main axis date')
-            .call(xAxis);
+            let g = main.append("svg:g");
 
-          // let yAxis = d3.svg.axis()
-          //   .scale(y)
-          //   .orient('left');
-          let yAxis = d3.axisLeft(y);
-
-          main.append('g')
-            .attr('transform', 'translate(0,0)')
-            .attr('class', 'main axis date')
-            .call(yAxis);
-
-          let g = main.append("svg:g");
-
-          g.selectAll("scatter-dots")
-            .data(data)
-            .enter().append("svg:circle")
-              .attr("cx", (d,i) => { return x(d[0]); })
-              .attr("cy", d => { return y(d[1]); })
-              .attr("r", 4);
+            g.selectAll("scatter-dots")
+              .data(data)
+              .enter().append("svg:circle")
+                .attr("cx", (d,i) => { return x(d.age); })
+                .attr("cy", d => { return y(d.weight); })
+                .attr("r", 4);
+          })
           </script>
         </div>
       </div>

@@ -2,6 +2,7 @@ let express = require('express');
 let app = express();
 app.use(express.static('styles'));
 app.use(express.static('/fake.csv'));
+app.use(express.static('assets'));
 let path = require('path');
 let d3 = require('d3');
 

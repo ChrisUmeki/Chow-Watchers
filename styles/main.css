@@ -3,12 +3,31 @@ html, body {
   padding: 0;
 }
 
+#app-wrapper {
+  padding: 0 75px 0 75px;
+}
+
 h3 {
   margin-top: 0.5em;
-  font-family: 'Roboto Mono', monospace;
-  font-size: 48px;
+  font-family: 'Crete Round', serif;
+  font-size: 65px;
   text-align: center;
   color: #EF5B5B;
+}
+
+#one-liner {
+  text-align: center;
+}
+
+.subtitle {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 24px;
+  color: #0FA3B1;
+}
+
+.about {
+  padding: 0 50px 0 50px;
+  font-family: 'Roboto Mono', monospace;
 }
 
 #form-wrapper {
@@ -17,4 +36,12 @@ h3 {
 
 label {
   font-family: 'Open Sans', sans-serif;
+}
+
+.submit-btn {
+  margin: 30px 0 30px 0;
+}
+
+#data-wrapper {
+
 }

@@ -14,7 +14,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto+Mono" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto+Mono|Crete+Round" rel="stylesheet">
 
     <!-- D3 -->
     <script src="https://d3js.org/d3.v4.min.js"></script>
@@ -22,55 +22,83 @@
 
   <body>
     <!-- Title & Logo -->
-    <h3>Welcome to Our Website!</h3>
-    <div class="container">
+    <h3>Chow Watchers</h3>
+    <p id="one-liner">Find out how your pet's weight compares to others' and help us battle pet obesity.</p>
+    <div class="container" id="app-wrapper">
       <div class="row" id="form-wrapper">
         <!-- Form for input -->
           <!-- add years and months options for age -->
-        <form>
+        <form class="form col-md-6">
+          <p class="subtitle">Enter your dog's information.</p>
           <div class="form-group" id="pet-name-wrapper">
-            <label for="pet-name">Name</label>
-            <input type="text" class="form-control" id="pet-name-input">
+            <!-- <label for="pet-name">Name</label> -->
+            <input type="text" class="form-control" id="pet-name-input" placeholder="Name">
           </div>
-          <div class="pet-age-wrapper">
-            <label for="pet-age">Age</label>
-            <span>Years</span>
-            <input type="text" class="form-control" id="pet-age-years-input">
-            <span>Months</span>
-            <input type="text" class="form-control" id="pet-age-months-input">
+          <div class="form-group" id="pet-age-wrapper">
+            <!-- <label for="pet-age">Age</label> -->
+            <input type="text" class="form-control" id="pet-age-input" placeholder="Age (in years)">
           </div>
-          <div class="pet-weight-wrapper">
-            <label for="pet-weight">Weight</label>
-            <input type="text" class="form-control" id="pet-weight-input">
+          <div class="form-group" id="pet-weight-wrapper">
+            <!-- <label for="pet-weight">Weight (in pounds)</label> -->
+            <input type="text" class="form-control" id="pet-weight-input" placeholder="Weight (in pounds)">
           </div>
-          <div class="pet-size-wrapper">
-
-          </div>
-          <div class="pet-breed-wrapper">
-            <label for="pet-breed">Breed</label>
+          <div class="form-group" id="pet-breed-wrapper">
+            <!-- <label for="pet-breed">Breed</label> -->
             <div class="dropdown">
               <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Select a breed
               </button>
               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 <a class="dropdown-item" href="#">Corgi</a>
-                <a class="dropdown-item" href="#">German Shpeherd</a>
+                <a class="dropdown-item" href="#">German Shepherd</a>
                 <a class="dropdown-item" href="#">Golden Retriever</a>
                 <a class="dropdown-item" href="#">Husky</a>
                 <a class="dropdown-item" href="#">Labrador</a>
+                <a class="dropdown-item" href="#">Mixed/Other</a>
                 <a class="dropdown-item" href="#">Shiba Inu</a>
               </div>
             </div>
           </div>
+          <div class="form-group" id="pet-size-wrapper">
+            <!-- <label for="size">Size</label> -->
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Select a size
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="#">Petite</a>
+                <a class="dropdown-item" href="#">Small</a>
+                <a class="dropdown-item" href="#">Medium</a>
+                <a class="dropdown-item" href="#">Large</a>
+              </div>
+            </div>
+          </div>
+          <button class="btn btn-primary submit-btn" type="submit">
+            Submit
+          </button>
         </form>
+        <div class="col-md-6">
+          <div class="about-wrapper">
+            <p class="about">
+              Hello, I'm Chowie! Welcome to Chow Watchers where we aim to provide stats and data about how your pet's weight compares to others' in our effort to fight the rising issue of pet obesity.
+            </p>
+          </div>
+          <div>
+            <img class="chow-img" src="assets/chowchowpuppy.jpg" alt="Chow Chow Puppy" align="right">
+          </div>
+        </div>
       </div>
       <!-- Data & Graphs -->
       <div class="row">
-
+        <div id="data-wrapper">
+          <p class="subtitle">Stats & Results</p>
+        </div>
       </div>
       <!-- Messages -->
       <div class="row">
+        <div>
 
+        </div>
       </div>
     </div>
   </body>

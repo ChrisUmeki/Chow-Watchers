@@ -20,7 +20,7 @@
     <script src="https://d3js.org/d3.v4.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.18/c3.min.js"></script>
   </head>
-  
+
   <body>
     <!-- Title & Logo -->
     <h3 id="chow">Chow Watchers</h3>
@@ -28,70 +28,68 @@
     <div class="container" id="app-wrapper">
       <div class="row">
         <p class="subtitle">Results</p>
-        <!-- Graphs go here -->
+        <!-- Graphs go in here -->
         <div class="data-wrapper">
           <!-- <svg style="width: 500px; height: 500px;"></svg> -->
           <script>
-          // d3.csv('/fake.csv', data => {
-          //   console.log(data);
+            // d3.csv('/fake.csv', data => {
+            //   console.log(data);
+            // })
+            let data = [[12,14], [24,27], [25,30], [60,40]];
 
+            let margin = {top: 50, right: 20, bottom: 80, left: 350},
+              width = 960 - margin.left - margin.right,
+              height = 500 - margin.top - margin.bottom;
 
-          // })
-          let data = [[12,14], [24,27], [25,30], [60,40]];
+            let x = d3.scaleLinear()
+              .domain([0, d3.max(data, d => { return d[0]; })])
+              .range([ 0, width ]);
 
-          let margin = {top: 20, right: 20, bottom: 80, left: 100},
-            width = 960 - margin.left - margin.right,
-            height = 500 - margin.top - margin.bottom;
+            let y = d3.scaleLinear()
+              .domain([0, d3.max(data, d => { return d[1]; })])
+              .range([ height, 0 ]);
 
-          let x = d3.scaleLinear()
-            .domain([0, d3.max(data, d => { return d[0]; })])
-            .range([ 0, width ]);
+            let scatterPlot = d3.select('body')
+              .append('svg:svg')
+              .attr('width', width + margin.right + margin.left)
+              .attr('height', height + margin.top + margin.bottom)
+              .attr('class', 'scatterPlot')
 
-          let y = d3.scaleLinear()
-            .domain([0, d3.max(data, d => { return d[1]; })])
-            .range([ height, 0 ]);
+            let main = scatterPlot.append('g')
+              .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')')
+              .attr('width', width)
+              .attr('height', height)
+              .attr('class', 'main')
 
-          let chart = d3.select('body')
-            .append('svg:svg')
-            .attr('width', width + margin.right + margin.left)
-            .attr('height', height + margin.top + margin.bottom)
-            .attr('class', 'chart')
+            let xAxis = d3.axisBottom(x);
 
-          let main = chart.append('g')
-            .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')')
-            .attr('width', width)
-            .attr('height', height)
-            .attr('class', 'main')
+            // let xAxis = d3.svg.axis()
+            //   .scale(x)
+            //   .orient('bottom');
 
-          let xAxis = d3.axisBottom(x);
+            main.append('g')
+              .attr('transform', 'translate(0,' + height + ')')
+              .attr('class', 'main axis date')
+              .call(xAxis);
 
-          // let xAxis = d3.svg.axis()
-          //   .scale(x)
-          //   .orient('bottom');
+            // let yAxis = d3.svg.axis()
+            //   .scale(y)
+            //   .orient('left');
+            let yAxis = d3.axisLeft(y);
 
-          main.append('g')
-            .attr('transform', 'translate(0,' + height + ')')
-            .attr('class', 'main axis date')
-            .call(xAxis);
+            main.append('g')
+              .attr('transform', 'translate(0,0)')
+              .attr('class', 'main axis date')
+              .call(yAxis);
 
-          // let yAxis = d3.svg.axis()
-          //   .scale(y)
-          //   .orient('left');
-          let yAxis = d3.axisLeft(y);
+            let g = main.append("svg:g");
 
-          main.append('g')
-            .attr('transform', 'translate(0,0)')
-            .attr('class', 'main axis date')
-            .call(yAxis);
-
-          let g = main.append("svg:g");
-
-          g.selectAll("scatter-dots")
-            .data(data)
-            .enter().append("svg:circle")
-              .attr("cx", (d,i) => { return x(d[0]); })
-              .attr("cy", d => { return y(d[1]); })
-              .attr("r", 4);
+            g.selectAll("scatter-dots")
+              .data(data)
+              .enter().append("svg:circle")
+                .attr("cx", (d,i) => { return x(d[0]); })
+                .attr("cy", d => { return y(d[1]); })
+                .attr("r", 4);
           </script>
         </div>
       </div>

@@ -32,7 +32,7 @@
         <div class="data-wrapper">
           <!-- <svg style="width: 500px; height: 500px;"></svg> -->
           <script>
-          d3.csv('fake.csv', data => {
+          d3.csv('corgi.csv', data => {
 
             let margin = {top: 20, right: 20, bottom: 80, left: 300},
               width = 960 - margin.left - margin.right,
@@ -83,7 +83,7 @@
               .attr("x", 0 - (height / 2))
               .attr("dy", "1em")
               .style("text-anchor", "middle")
-              .text("Breed");
+              .text("Weight (lbs)");
 
             let g = main.append("svg:g");
 
@@ -92,7 +92,7 @@
               .enter().append("svg:circle")
                 .attr("cx", (d,i) => { return x(d.age); })
                 .attr("cy", d => { return y(d.weight); })
-                .attr("r", 4);
+                .attr("r", 2);
           })
           </script>
         </div>

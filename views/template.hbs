@@ -7,20 +7,21 @@
         <p class="subtitle">Results</p>
         <!-- Graphs go in here -->
         <div class="data-wrapper">
-          <!-- <svg style="width: 500px; height: 500px;"></svg> -->
           <script>
-          d3.csv('corgi.csv', data => {
+          d3.csv('germanshepherd.csv', data => {
 
             let margin = {top: 20, right: 20, bottom: 80, left: 100},
               width = 960 - margin.left - margin.right,
               height = 500 - margin.top - margin.bottom;
 
             let x = d3.scaleLinear()
-              .domain([0, d3.max(data, d => { return d.age; })])
+              .domain([0, 120])
+              // .domain([0, d3.max(data, d => { return d.age; })])
               .range([ 0, width ]);
 
             let y = d3.scaleLinear()
-              .domain([0, d3.max(data, d => { return d.weight; })])
+              .domain([0, 150])
+              // .domain([0, d3.max(data, d => { return d.weight; })])
               .range([ height, 0 ]);
 
             let chart = d3.select('.data-wrapper')
@@ -71,23 +72,34 @@
                 .attr("cy", d => { return y(d.weight); })
                 .attr("r", 2);
 
+            g.selectAll("scatter-dots")
+              .data(data)  
+              .enter().append("svg:circle")  // create a new circle for each value
+                  .attr("cy", function (d) { return y({{weight}}); } ) // translate y value to a pixel
+                  .attr("cx", function (d,i) { return x({{age}}); } ) // translate x value
+                  .attr("r", 4) // radius of circle
+                  .style("fill", "red");
+
             // TODO: CHRIS
-            g.selectAll("circle")
-              .data().enter() // put coordinates (age, breed) of inside parentheses of data() --> data([age, breed])
-              .append("circle")
-              .attr("r", 5)
-              .attr("cx", function(d) { return x(); }) //not sure what to put inside x()
-              .attr("cy", function(d) { return y(); }); //not sure what to put inside y()
-              .attr("fill", "red");
+             
+            // main.selectAll("circle")
+            //   .data([[4,20]])// put coordinates (age, breed) of inside parentheses of data() --> data([age, breed])
+            //   .enter().append("svg:circle")
+            //   .attr("r", 3)
+            //   .attr("cx", d => { return 4; }) //not sure what to put inside x()
+            //   .attr("cy", d => { return 20; }); //not sure what to put inside y()
+            //   .attr("fill", "red");
           })
           </script>
           </div>
         </div>
         <!-- Recommendations -->
         <div class="recommendations-wrapper">
+          
+          {{#if over}}
           <div class="overweight-recommendations" style="display:block">
             <div class="overweight-food-recommendations">
-              <p>Your dog is <strong>{{category}}weight at {{age}} years old and {{weight}} pounds</strong>.</p>
+              <p>{{name}} is <strong>overweight</strong> at {{age}} years old and {{weight}} pounds.</p>
               <p>Lack of intervention can lead to obesity, which can result in a variety of diseases such as:</p>
               <ul>
                 <li>Arthritis</li>
@@ -114,9 +126,10 @@
               </div>
             </div>
           </div>
+          {{else if under}}
           <div class="underweight-recommendations" style="display:block">
             <div class="underweight-food-recommendations">
-              <p>Your dog is <strong>underweight</strong>.</p>
+              <p>{{name}} is <strong>underweight</strong> at {{age}} years old and {{weight}} pounds.</p>
               <p>Being underweight can result in numerous health problems such as:</p>
               <ul>
                 <li>Leukemia</li>
@@ -135,6 +148,15 @@
               </div>
             </div>
           </div>
+          {{else}}
+          <div class="normal-recommendations" style="display:block">
+            <div class="normal-food-recommendations">
+              <p>{{name}} is <strong>normal</strong> at {{age}} years old and {{weight}} pounds.</p>
+              <p>Being normal is good. </p>
+            </div>
+          </div>
         </div>
       </div>
+      {{/if}}
     </div>
+  </div>

@@ -36,26 +36,25 @@ app.get('/result', urlencodedParser, (req, res) => {
     }
   }
   //TODO: Extract breed data from drop down instead of assuming corgi
-  let breed = 'corgi';
+  let breed = 'germanshepherd';
 
   let upper = ranges[breed].max * Math.pow(age, .5)/(Math.pow(age, .5) + 1);
   let lower = ranges[breed].min * Math.pow(age, .5)/(Math.pow(age, .5) + 1);
 
-  if (weight > upper) {
-    category = 'over';
-  } else if (weight < lower) {
-    category = 'under';
-  } else {
-    category = 'normal ';
-  }
+  let over = weight > upper;
+  let under = weight < lower;
+  let normal = !over && !under;
 
 
   // res.sendFile(path.join(__dirname + '/result.html'));
   res.render('template', {
     title: 'Chow Watchers - Results',
+    name: req.query.name,
     age: age,
     weight: weight,
-    category: category
+    over: over,
+    under: under,
+    normal: normal
   });
 
 });

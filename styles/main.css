@@ -54,3 +54,7 @@ label {
 .results-wrapper {
   padding-top: 50px;
 }
+
+li a {
+  text-decoration: none;
+}

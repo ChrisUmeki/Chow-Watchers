@@ -5,6 +5,7 @@ app.use(express.static('/fake.csv'));
 app.use(express.static('assets'));
 let path = require('path');
 let d3 = require('d3');
+let csv = require('csv');
 
 let bodyParser = require('body-parser');
 let urlencodedParser = bodyParser.urlencoded({ extended: true });
@@ -20,7 +21,7 @@ app.get('/result', urlencodedParser, (req, res) => {
   //let name = req.body.pet-name-input;
   console.log(req.query);
 
-  
+   
   res.sendFile(path.join(__dirname + '/result.html'));
 
 

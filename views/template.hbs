@@ -71,6 +71,7 @@
                 .attr("cy", d => { return y(d.weight); })
                 .attr("r", 2);
 
+            // TODO: CHRIS
             g.selectAll("circle")
               .data().enter() // put coordinates (age, breed) of inside parentheses of data() --> data([age, breed])
               .append("circle")

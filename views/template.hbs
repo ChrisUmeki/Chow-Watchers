@@ -1,27 +1,4 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Chow Watchers - Results</title>
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="main.css">
-
-    <!-- JavaScript -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto+Mono|Crete+Round|Quicksand" rel="stylesheet">
-
-    <!-- D3 -->
-    <script src="https://d3js.org/d3.v4.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.18/c3.min.js"></script>
-  </head>
-
-  <body>
     <!-- Title & Logo -->
     <h3 id="chow">Chow Watchers</h3>
     <p id="one-liner">Find out how your dog's weight compares to others' and help us battle dog obesity.</p>
@@ -101,7 +78,7 @@
         <div class="recommendations-wrapper">
           <div class="overweight-recommendations" style="display:block">
             <div class="overweight-food-recommendations">
-              <p>Your dog is <strong>overweight</strong>.</p>
+              <p>Your dog is <strong>{{category}}weight at {{age}} years old and {{weight}} pounds</strong>.</p>
               <p>Lack of intervention can lead to obesity, which can result in a variety of diseases such as:</p>
               <ul>
                 <li>Arthritis</li>
@@ -152,5 +129,4 @@
         </div>
       </div>
     </div>
-  </body>
-</html>
+

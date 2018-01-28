@@ -50,3 +50,7 @@ label {
 .submit-btn {
   margin: 30px 0 30px 0;
 }
+
+.results-wrapper {
+  padding-top: 50px;
+}

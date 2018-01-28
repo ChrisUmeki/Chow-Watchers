@@ -24,7 +24,7 @@
   <body>
     <!-- Title & Logo -->
     <h3 id="chow">Chow Watchers</h3>
-    <p id="one-liner">Here's how your pet's weight compares to others'</p>
+    <p id="one-liner">Find out how your dog's weight compares to others' and help us battle dog obesity.</p>
     <div class="container" id="app-wrapper">
       <div class="row results-wrapper">
         <p class="subtitle">Results</p>
@@ -34,7 +34,7 @@
           <script>
           d3.csv('corgi.csv', data => {
 
-            let margin = {top: 20, right: 20, bottom: 80, left: 300},
+            let margin = {top: 20, right: 20, bottom: 80, left: 100},
               width = 960 - margin.left - margin.right,
               height = 500 - margin.top - margin.bottom;
 
@@ -46,7 +46,7 @@
               .domain([0, d3.max(data, d => { return d.weight; })])
               .range([ height, 0 ]);
 
-            let chart = d3.select('body')
+            let chart = d3.select('.data-wrapper')
               .append('svg:svg')
               .attr('width', width + margin.right + margin.left)
               .attr('height', height + margin.top + margin.bottom)
@@ -79,7 +79,7 @@
 
             main.append("text")
               .attr("transform", "rotate(-90)")
-              .attr("y", 0 - (margin.left / 4))
+              .attr("y", 0 - (margin.left / 1.25))
               .attr("x", 0 - (height / 2))
               .attr("dy", "1em")
               .style("text-anchor", "middle")
@@ -95,6 +95,32 @@
                 .attr("r", 2);
           })
           </script>
+          </div>
+        </div>
+        <!-- Recommendations -->
+        <div class="recommendations-wrapper">
+          <!-- Food -->
+          <div class="overweight-recommendations" style="display:block">
+            <div class="overweight-food-recommendations">
+              <p>Your dog is <strong>overweight</strong>.</p>
+              <p>Lack of intervention can lead to obesity, which can result in a variety of diseases such as:</p>
+              <ul>
+                <li>Arthritis</li>
+                <li>Bladder/Urinary Tract Disease</li>
+                <li>Low Thyroid Hormone Production</li>
+                <li>Diabetes</li>
+                <li>Heart Failure</li>
+                <li>Chronic Kidney Disease</li>
+              </ul>
+              <p>To help combat progression towards obesity, adjusting your dog's diet will help. Here are some recommended food brands:</p>
+              <div class="overweight-foods">
+                <div class="row">
+                  <div class="col-md-6 food-name"></div>
+                  <div class="col-md-6 food-img"></div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

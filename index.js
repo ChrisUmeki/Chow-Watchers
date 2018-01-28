@@ -1,10 +1,14 @@
 let express = require('express');
 let app = express();
 app.use(express.static('styles'));
-app.use(express.static('/fake.csv'));
 app.use(express.static('assets'));
 let path = require('path');
 let csv = require('csv');
+
+let hbs = require('express-handlebars');
+app.engine('hbs', hbs({extname: '.hbs', defaultLayout: 'layout'}));
+app.set('views', path.join(__dirname, 'views/'));
+app.set('view engine', 'hbs');
 
 let bodyParser = require('body-parser');
 let urlencodedParser = bodyParser.urlencoded({ extended: true });
@@ -17,12 +21,42 @@ app.get('/', (req, res) => {
 
 
 app.get('/result', urlencodedParser, (req, res) => {
-  //let name = req.body.pet-name-input;
   console.log(req.query);
+  let age = req.query.age;
+  let weight = req.query.weight;
+
+  let ranges = {
+    'corgi': {
+    min: 27,
+    max: 38
+    },
+    'germanshepherd': {
+      min: 75,
+      max: 95
+    }
+  }
+  //TODO: Extract breed data from drop down instead of assuming corgi
+  let breed = 'corgi';
+
+  let upper = ranges[breed].max * Math.pow(age, .5)/(Math.pow(age, .5) + 1);
+  let lower = ranges[breed].min * Math.pow(age, .5)/(Math.pow(age, .5) + 1);
+
+  if (weight > upper) {
+    category = 'over';
+  } else if (weight < lower) {
+    category = 'under';
+  } else {
+    category = 'normal ';
+  }
 
 
-  res.sendFile(path.join(__dirname + '/result.html'));
-
+  // res.sendFile(path.join(__dirname + '/result.html'));
+  res.render('template', {
+    title: 'Chow Watchers - Results',
+    age: age,
+    weight: weight,
+    category: category
+  });
 
 });
 

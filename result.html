@@ -5,7 +5,7 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="styles/main.css">
+    <link rel="stylesheet" type="text/css" href="main.css">
 
     <!-- JavaScript -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -26,7 +26,7 @@
     <h3 id="chow">Chow Watchers</h3>
     <p id="one-liner">Find out how your pet's weight compares to others' and help us battle pet obesity.</p>
     <div class="container" id="app-wrapper">
-      <div class="row">
+      <div class="row results-wrapper">
         <p class="subtitle">Results</p>
         <!-- Graphs go in here -->
         <div class="data-wrapper">
@@ -34,7 +34,7 @@
           <script>
           d3.csv('fake.csv', data => {
 
-            let margin = {top: 20, right: 20, bottom: 80, left: 100},
+            let margin = {top: 20, right: 20, bottom: 80, left: 300},
               width = 960 - margin.left - margin.right,
               height = 500 - margin.top - margin.bottom;
 
@@ -65,12 +65,25 @@
               .attr('class', 'main axis date')
               .call(xAxis);
 
+            main.append("text")
+              .attr("transform", "translate(" + (width / 2) + " ," + (height + (margin.bottom / 1.25)) + ")")
+              .style("text-anchor", "middle")
+              .text("Age (months)")
+
             let yAxis = d3.axisLeft(y);
 
             main.append('g')
               .attr('transform', 'translate(0,0)')
               .attr('class', 'main axis date')
               .call(yAxis);
+
+            main.append("text")
+              .attr("transform", "rotate(-90)")
+              .attr("y", 0 - (margin.left / 4))
+              .attr("x", 0 - (height / 2))
+              .attr("dy", "1em")
+              .style("text-anchor", "middle")
+              .text("Breed");
 
             let g = main.append("svg:g");
 

@@ -58,3 +58,18 @@ label {
 li a {
   text-decoration: none;
 }
+
+.app-img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 18%;
+}
+
+.map-img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  padding-bottom: 15px;
+}

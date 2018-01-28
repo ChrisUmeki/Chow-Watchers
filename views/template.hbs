@@ -73,7 +73,7 @@
                 .attr("r", 2);
 
             g.selectAll("scatter-dots")
-              .data(data)  
+              .data(data)
               .enter().append("svg:circle")  // create a new circle for each value
                   .attr("cy", function (d) { return y({{weight}}); } ) // translate y value to a pixel
                   .attr("cx", function (d,i) { return x({{age}}); } ) // translate x value
@@ -81,7 +81,7 @@
                   .style("fill", "red");
 
             // TODO: CHRIS
-             
+
             // main.selectAll("circle")
             //   .data([[4,20]])// put coordinates (age, breed) of inside parentheses of data() --> data([age, breed])
             //   .enter().append("svg:circle")
@@ -95,7 +95,7 @@
         </div>
         <!-- Recommendations -->
         <div class="recommendations-wrapper">
-          
+
           {{#if over}}
           <div class="overweight-recommendations" style="display:block">
             <div class="overweight-food-recommendations">
@@ -124,6 +124,14 @@
                   <li><a href="https://www.wellnesspetfood.com/natural-dog-food/product-catalog/core-reduced-fat-reduced-fat">Wellness Core Reduced Fat (Dry)</a></li>
                 </ul>
               </div>
+              <div class="map-wrapper">
+                <p>In addition, we don't suggest basing changes in your dog's diet and lifestyle solely on the recommendations given above. We recommend seeing a veterinarian or animal clinic near you.</p>
+                <img class="map-img" src="map.png" alt="map">
+              </div>
+              <div class="tracker-wrapper">
+                <p>Check out our app <strong>Chow Tracker</strong> (coming to you in the near future)!</p>
+                <img class="app-img" src="phone.png" alt="Chow Tracker app">
+              </div>
             </div>
           </div>
           {{else if under}}
@@ -146,13 +154,38 @@
                   <li><a href="https://www.proplan.com/dogs/platforms/natural">Purina Pro Plan Natural Grain Free Dog Food</a></li>
                 </ul>
               </div>
+              <div class="map-wrapper">
+                <p>In addition, we don't suggest basing changes in your dog's diet and lifestyle solely on the recommendations given above. We recommend seeing a veterinarian or animal clinic near you.</p>
+                <img class="map-img" src="map.png" alt="map">
+              </div>
+              <div class="tracker-wrapper">
+                <p>Check out our app <strong>Chow Tracker</strong> (coming to you in the near future)!</p>
+                <img class="app-img" src="phone.png" alt="Chow Tracker app">
+              </div>
             </div>
           </div>
           {{else}}
           <div class="normal-recommendations" style="display:block">
             <div class="normal-food-recommendations">
-              <p>{{name}} is <strong>normal</strong> at {{age}} years old and {{weight}} pounds.</p>
-              <p>Being normal is good. </p>
+              <p>Congratulations! {{name}} is at a <strong>healthy</strong> weight at {{age}} years old and {{weight}} pounds.</p>
+              <p>It looks like you are taking great and attentive care to your dog. Keep up the good work! If you're interested, here are some recommended dog food brands to help maintain a healthy weight and lifestyle:</p>
+              <div class="normal-foods">
+                <ul>
+                  <li><a href="https://www.hillspet.com/dog-food/sd-adult-large-breed-dog-food-dry">Hill's Science Diet Adult Large Breed</a></li>
+                  <li><a href="https://www.royalcanin.com/products/royal-canin-size-health-nutrition-medium-adult-dry-dog-food/3004">Royal Canin Size Health Nutrition</a></li>
+                  <li><a href="https://www.proplan.com/dogs/products?productform=dry-food">Purina Pro Plan Dry Dog Food</a></li>
+                  <li><a href="#">Orijen Adult Food</a></li>
+                  <li><a href="https://www.wellnesspetfood.com/natural-dog-food/product-catalog/core-reduced-fat-reduced-fat">Wellness Core Reduced Fat (Dry)</a></li>
+                </ul>
+              </div>
+              <div class="map-wrapper">
+                <p>Although your dog may not be experiencing any major health issues, we still recommend visiting a veterinarian or animal clinic near you.</p>
+                <img class="map-img" src="map.png" alt="map">
+              </div>
+              <div class="tracker-wrapper">
+                <p>Check out our app <strong>Chow Tracker</strong> (coming to you in the near future)!</p>
+                <img class="app-img" src="phone.png" alt="Chow Tracker app">
+              </div>
             </div>
           </div>
         </div>
